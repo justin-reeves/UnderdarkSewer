@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
 using Harmony;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
-using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Locations;
 
-namespace YourProjectName
+namespace UnderdarkSewer
 {
     
     public class ModEntry : Mod
@@ -29,10 +22,11 @@ namespace YourProjectName
 
     public static class SewerMapFix
     {
-        static bool Postfix(Sewer __instance, string map, string name) 
+        static void Postfix(ref Color ___waterColor, ref Color ___steamColor, ref NPC ___krobus) 
         {
-            
-            return false;
+            ___waterColor = Color.Indigo;
+            ___steamColor = new Color(255, 200, 255);
+            ___krobus.Sprite = new AnimatedSprite("Characters\\Krobus", 0, 16, 32);
         }
     }
 }
